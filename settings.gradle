@@ -1,0 +1,2 @@
+rootProject.name = "MotionLayoutMock"
+include ':app'
