@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     var atStart = true
     var atStart2 = true
     var atStartButtonCancel = true
+    var atStartButtonCancel2 = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,27 +29,69 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.buttonFirst.setOnClickListener {
-            showOneTileAnim()
+            //showOneTileAnim()
+            makeFirstAnim()
         }
 
         binding.buttonSecond.setOnClickListener {
-            showFullTileAnim()
+            //showFullTileAnim()
+            makeSecondAnim()
         }
 
         binding.buttonCancelar.setOnClickListener {
             showCancelAnim()
         }
+
+        binding.buttonCancelar2.setOnClickListener {
+            showFullCancelAnim()
+        }
     }
+
+    private fun makeFirstAnim(){
+        if (atStart) {
+            atStart = false
+            binding.mlRecyclerView.setTransition(R.id.startFirstPart, R.id.endFirstPart)
+            binding.mlRecyclerView.transitionToEnd()
+            binding.mlCancelButton.setTransition(R.id.startFirstCancelAnim, R.id.endFirstCancelAnim)
+            binding.mlCancelButton.transitionToEnd()
+        } else {
+            atStart = true
+            binding.mlRecyclerView.setTransition(R.id.endFirstPart, R.id.startFirstPart)
+            binding.mlRecyclerView.transitionToEnd()
+            binding.mlCancelButton.setTransition(R.id.endFirstCancelAnim, R.id.startFirstCancelAnim)
+            binding.mlCancelButton.transitionToEnd()
+        }
+    }
+
+    private fun makeSecondAnim() {
+        if (atStart) return
+        if (atStart2) {
+            atStart2 = false
+            binding.mlRecyclerView.setTransition(R.id.startSecondPart, R.id.endSecondPart)
+            binding.mlRecyclerView.transitionToEnd()
+            binding.mlCancelButton.setTransition(R.id.startSecondCancelAnim, R.id.endSecondCancelAnim)
+            binding.mlCancelButton.transitionToEnd()
+        } else {
+            atStart2 = true
+            binding.rvMotion.scrollToPosition(0)
+            binding.mlRecyclerView.setTransition(R.id.endSecondPart, R.id.startSecondPart)
+            binding.mlRecyclerView.transitionToEnd()
+            binding.mlCancelButton.setTransition(R.id.endSecondCancelAnim, R.id.startSecondCancelAnim)
+            binding.mlCancelButton.transitionToEnd()
+        }
+    }
+
+
 
     private fun showOneTileAnim() {
         if (atStart) {
             atStart = false
-            binding.motionRV.setTransition(R.id.startFirstPart, R.id.endFirstPart)
-            binding.motionRV.transitionToEnd()
+            binding.mlRecyclerView.setTransition(R.id.startFirstPart, R.id.endFirstPart)
+            binding.mlRecyclerView.transitionToEnd()
         } else {
             atStart = true
-            binding.motionRV.setTransition(R.id.endFirstPart, R.id.startFirstPart)
-            binding.motionRV.transitionToEnd()
+            binding.mlRecyclerView.setTransition(R.id.endFirstPart, R.id.startFirstPart)
+            binding.mlRecyclerView.transitionToEnd()
         }
     }
 
@@ -56,24 +99,37 @@ class MainActivity : AppCompatActivity() {
         if (atStart) return
         if (atStart2) {
             atStart2 = false
-            binding.motionRV.setTransition(R.id.startSecondPart, R.id.endSecondPart)
-            binding.motionRV.transitionToEnd()
+            binding.mlRecyclerView.setTransition(R.id.startSecondPart, R.id.endSecondPart)
+            binding.mlRecyclerView.transitionToEnd()
         } else {
             atStart2 = true
-            binding.motionRV.setTransition(R.id.endSecondPart, R.id.startSecondPart)
-            binding.motionRV.transitionToEnd()
+            binding.mlRecyclerView.setTransition(R.id.endSecondPart, R.id.startSecondPart)
+            binding.mlRecyclerView.transitionToEnd()
         }
     }
 
     private fun showCancelAnim(){
         if (atStartButtonCancel) {
             atStartButtonCancel = false
-            binding.motionRV.setTransition(R.id.startFirstCancelAnim, R.id.endFirstCancelAnim)
-            binding.motionRV.transitionToEnd()
+            binding.mlCancelButton.setTransition(R.id.startFirstCancelAnim, R.id.endFirstCancelAnim)
+            binding.mlCancelButton.transitionToEnd()
         } else {
             atStartButtonCancel = true
-            binding.motionRV.setTransition(R.id.endFirstCancelAnim, R.id.startFirstCancelAnim)
-            binding.motionRV.transitionToEnd()
+            binding.mlCancelButton.setTransition(R.id.endFirstCancelAnim, R.id.startFirstCancelAnim)
+            binding.mlCancelButton.transitionToEnd()
+        }
+    }
+
+    private fun showFullCancelAnim(){
+        if (atStartButtonCancel) return
+        if (atStartButtonCancel2) {
+            atStartButtonCancel2 = false
+            binding.mlCancelButton.setTransition(R.id.startSecondCancelAnim, R.id.endSecondCancelAnim)
+            binding.mlCancelButton.transitionToEnd()
+        } else {
+            atStartButtonCancel2 = true
+            binding.mlCancelButton.setTransition(R.id.endSecondCancelAnim, R.id.startSecondCancelAnim)
+            binding.mlCancelButton.transitionToEnd()
         }
     }
 }

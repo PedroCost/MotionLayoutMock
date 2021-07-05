@@ -25,9 +25,7 @@
 
     <style name="buttonCancel">
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">130dp</item>
-        <item name="layout_constraintEnd_toEndOf">parent</item>
-        <item name="layout_constraintTop_toBottomOf">@id/rvMotion</item>
+        <item name="android:layout_width">120dp</item>
         <item name="android:layout_marginHorizontal">@dimen/medium_padding</item>
         <item name="android:text">Cancel</item>
     </style>

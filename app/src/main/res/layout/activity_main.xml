@@ -40,9 +40,9 @@
 
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutDescription="@xml/item_movie_scene"
-        android:id="@+id/motionRV"
+        android:layout_height="200dp"
+        app:layoutDescription="@xml/recycler_view_scene"
+        android:id="@+id/mlRecyclerView"
         app:showPaths="true"
         tools:showPaths="true">
 
@@ -50,11 +50,20 @@
             android:id="@+id/rvMotion"
             style="@style/rvStyle" />
 
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutDescription="@xml/button_cancel_scene"
+        android:id="@+id/mlCancelButton"
+        app:showPaths="true"
+        tools:showPaths="true">
+
         <Button
             android:id="@+id/buttonCancel"
             style="@style/buttonCancel"
             />
-
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </LinearLayout>
