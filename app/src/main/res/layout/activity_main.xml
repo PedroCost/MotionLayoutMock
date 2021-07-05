@@ -1,18 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.activity.MainActivity"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/buttonFirst"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Anim 1" />
+
+        <Button
+            android:id="@+id/buttonSecond"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Anim 2" />
+
+        <Button
+            android:id="@+id/buttonCancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel" />
+
+        <Button
+            android:id="@+id/buttonCancelar2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel 2" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/item_movie_scene"
+        android:id="@+id/motionRV"
+        app:showPaths="true"
+        tools:showPaths="true">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMotion"
+            style="@style/rvStyle" />
+
+        <Button
+            android:id="@+id/buttonCancel"
+            style="@style/buttonCancel"
+            />
+
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</LinearLayout>

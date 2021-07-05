@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <!-- First anim on recycler view -->
+    <Transition
+        motion:constraintSetStart="@+id/startFirstPart"
+        motion:constraintSetEnd="@+id/endFirstPart"
+        motion:duration="1000">
+    </Transition>
+
+    <ConstraintSet android:id="@+id/startFirstPart">
+        <Constraint
+            android:id="@+id/rvMotion"
+            android:layout_marginEnd="-900dp"
+            style="@style/rvStyle"
+            />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/endFirstPart">
+        <Constraint
+            android:id="@+id/rvMotion"
+            android:layout_marginEnd="-400dp"
+            style="@style/rvStyle"
+            />
+    </ConstraintSet>
+
+    <!-- Second anim on recycler view -->
+    <Transition
+        motion:constraintSetStart="@+id/startSecondPart"
+        motion:constraintSetEnd="@+id/endSecondPart"
+        motion:duration="1000">
+    </Transition>
+
+    <ConstraintSet android:id="@+id/startSecondPart">
+        <Constraint
+            android:id="@+id/rvMotion"
+            android:layout_marginEnd="-400dp"
+            style="@style/rvStyle"
+            />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/endSecondPart">
+        <Constraint
+            android:id="@+id/rvMotion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent" />
+    </ConstraintSet>
+
+    <!-- First anim on Cancel button -->
+    <Transition
+        motion:constraintSetStart="@+id/startFirstCancelAnim"
+        motion:constraintSetEnd="@+id/endFirstCancelAnim"
+        motion:duration="1000">
+    </Transition>
+
+    <ConstraintSet android:id="@+id/startFirstCancelAnim">
+        <Constraint
+            android:id="@+id/buttonCancel"
+            android:layout_marginEnd="-600dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            style="@style/buttonCancel"
+            />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/endFirstCancelAnim">
+        <Constraint
+            android:id="@+id/buttonCancel"
+            motion:layout_constraintEnd_toEndOf="parent"
+            style="@style/buttonCancel"
+            />
+    </ConstraintSet>
+
+    <!-- Second anim on Cancel button -->
+    <Transition
+        motion:constraintSetStart="@+id/startSecondCancelAnim"
+        motion:constraintSetEnd="@+id/endSecondCancelAnim"
+        motion:duration="1000">
+    </Transition>
+
+    <ConstraintSet android:id="@+id/startSecondCancelAnim">
+        <Constraint
+            android:id="@+id/buttonCancel"
+            motion:layout_constraintEnd_toEndOf="parent"
+            style="@style/buttonCancel"
+            />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/endSecondCancelAnim">
+        <Constraint
+            android:id="@+id/buttonCancel"
+            motion:layout_constraintStart_toStartOf="parent"
+            style="@style/buttonCancel"
+            />
+    </ConstraintSet>
+
+
+</MotionScene>
