@@ -40,6 +40,21 @@
 
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutDescription="@xml/title_scene"
+        android:id="@+id/mlTitle"
+        app:showPaths="true"
+        tools:showPaths="true">
+
+        <TextView
+            android:id="@+id/tvAnimTitle"
+            android:text="Watch Next"
+            style="@style/tvAnimTitle" />
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:layout_width="match_parent"
         android:layout_height="200dp"
         app:layoutDescription="@xml/recycler_view_scene"
         android:id="@+id/mlRecyclerView"

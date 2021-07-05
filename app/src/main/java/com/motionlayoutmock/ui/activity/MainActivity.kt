@@ -2,7 +2,6 @@ package com.motionlayoutmock.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.motionlayoutmock.R
@@ -39,11 +38,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.buttonCancelar.setOnClickListener {
-            showCancelAnim()
+
         }
 
         binding.buttonCancelar2.setOnClickListener {
-            showFullCancelAnim()
+
         }
     }
 
@@ -54,12 +53,16 @@ class MainActivity : AppCompatActivity() {
             binding.mlRecyclerView.transitionToEnd()
             binding.mlCancelButton.setTransition(R.id.startFirstCancelAnim, R.id.endFirstCancelAnim)
             binding.mlCancelButton.transitionToEnd()
+            binding.mlTitle.setTransition(R.id.startFirstTitleAnim, R.id.endFirstTitleAnim)
+            binding.mlTitle.transitionToEnd()
         } else {
             atStart = true
             binding.mlRecyclerView.setTransition(R.id.endFirstPart, R.id.startFirstPart)
             binding.mlRecyclerView.transitionToEnd()
             binding.mlCancelButton.setTransition(R.id.endFirstCancelAnim, R.id.startFirstCancelAnim)
             binding.mlCancelButton.transitionToEnd()
+            binding.mlTitle.setTransition(R.id.endFirstTitleAnim, R.id.startFirstTitleAnim)
+            binding.mlTitle.transitionToEnd()
         }
     }
 
@@ -71,13 +74,17 @@ class MainActivity : AppCompatActivity() {
             binding.mlRecyclerView.transitionToEnd()
             binding.mlCancelButton.setTransition(R.id.startSecondCancelAnim, R.id.endSecondCancelAnim)
             binding.mlCancelButton.transitionToEnd()
+            binding.mlTitle.setTransition(R.id.startSecondTitleAnim, R.id.endSecondTitleAnim)
+            binding.mlTitle.transitionToEnd()
         } else {
             atStart2 = true
-            binding.rvMotion.scrollToPosition(0)
+            binding.rvMotion.smoothScrollToPosition(0)
             binding.mlRecyclerView.setTransition(R.id.endSecondPart, R.id.startSecondPart)
             binding.mlRecyclerView.transitionToEnd()
             binding.mlCancelButton.setTransition(R.id.endSecondCancelAnim, R.id.startSecondCancelAnim)
             binding.mlCancelButton.transitionToEnd()
+            binding.mlTitle.setTransition(R.id.endSecondTitleAnim, R.id.startSecondTitleAnim)
+            binding.mlTitle.transitionToEnd()
         }
     }
 
