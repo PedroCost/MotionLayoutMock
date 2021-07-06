@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.motionlayoutmock.R
 import com.motionlayoutmock.databinding.ItemMovieBinding
+import com.motionlayoutmock.databinding.ItemMovieWithTimerBinding
 import com.motionlayoutmock.model.MovieModel
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
@@ -16,10 +17,10 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_movie, parent, false)
+            .inflate(R.layout.item_movie, parent, false)
 
         return MovieViewHolder(
-                layoutInflater
+            layoutInflater
         )
     }
 

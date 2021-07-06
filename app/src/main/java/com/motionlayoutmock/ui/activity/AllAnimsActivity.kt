@@ -8,11 +8,12 @@ import com.motionlayoutmock.R
 import com.motionlayoutmock.databinding.ActivityAllAnimsBinding
 import com.motionlayoutmock.model.movieDummyData2
 import com.motionlayoutmock.ui.adapter.MovieAdapter
+import com.motionlayoutmock.ui.adapter.MovieAdapterWithTimer
 
 class AllAnimsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAllAnimsBinding
-    private var foodAdapter: MovieAdapter = MovieAdapter()
+    private var movieAdapter: MovieAdapterWithTimer = MovieAdapterWithTimer()
     var atStart = true
     var atStart2 = true
 
@@ -22,8 +23,8 @@ class AllAnimsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.rvMotionAll.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
-        binding.rvMotionAll.adapter = foodAdapter
-        foodAdapter.addAll(movieDummyData2)
+        binding.rvMotionAll.adapter = movieAdapter
+        movieAdapter.addAll(movieDummyData2)
 
         binding.buttonFirst.setOnClickListener {
             makeFirstAnim()
