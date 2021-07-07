@@ -32,9 +32,8 @@
         android:layout_height="match_parent"
         app:layoutDescription="@xml/all_anims_scene"
         android:id="@+id/mlAll"
-        app:showPaths="true"
         tools:showPaths="true"
-        android:background="#B8B8B8"
+        tools:background="#B8B8B8"
         >
 
         <TextView

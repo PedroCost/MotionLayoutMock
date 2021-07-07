@@ -1,7 +1,11 @@
 package com.motionlayoutmock.ui.activity
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.DisplayMetrics
+import android.widget.AbsListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
@@ -21,12 +25,14 @@ class AllAnimsActivity : AppCompatActivity() {
     lateinit var customLayout : CustomLayout
 
     private lateinit var linearSmoothScroller: LinearSmoothScroller
+
     private lateinit var scrollListener :RecyclerView.OnScrollListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAllAnimsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        var contx = this
 
         customLayout = CustomLayout(this, RecyclerView.HORIZONTAL, false)
 
@@ -47,6 +53,25 @@ class AllAnimsActivity : AppCompatActivity() {
         binding.buttonSecond.setOnClickListener {
             makeSecondAnim()
         }
+
+
+        // If User AFK from list for TOTAL_COUNTDOWN_TIME seconds
+        val TOTAL_AFK_TIME = 10
+        val countDownTimer = object : CountDownTimer((TOTAL_AFK_TIME * 1000).toLong(), 500) {
+            override fun onTick(leftTimeInMilliseconds: Long) {}
+            override fun onFinish() {
+                Toast.makeText(contx, "scroll time ended", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.rvMotionAll.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                countDownTimer.start()
+            }
+        })
+
+
 
 
         //Slow recycler view scrolling
@@ -75,7 +100,8 @@ class AllAnimsActivity : AppCompatActivity() {
             atStart = false
             binding.mlAll.setTransition(R.id.startFirstAllAnim, R.id.endFirstAllAnim)
             binding.mlAll.transitionToEnd()
-            binding.rvMotionAll.addOnScrollListener(scrollListener)
+
+            //binding.rvMotionAll.addOnScrollListener(scrollListener)
         } else {
             atStart = true
             binding.mlAll.setTransition(R.id.endFirstAllAnim, R.id.startFirstAllAnim)
@@ -87,25 +113,28 @@ class AllAnimsActivity : AppCompatActivity() {
         if (atStart) return
         if (atStart2) {
             atStart2 = false
-            binding.rvMotionAll.removeOnScrollListener(scrollListener)
             binding.mlAll.setTransition(R.id.startSecondAllAnim, R.id.endSecondAllAnim)
             binding.mlAll.transitionToEnd()
 
+            //binding.rvMotionAll.removeOnScrollListener(scrollListener)
             customLayout.setScrollEnabled(true)
 
         } else {
             atStart2 = true
-            //binding.rvMotionAll.smoothScrollToPosition(0) //Scroll to start of recycler view
-            binding.rvMotionAll.addOnScrollListener(scrollListener)
-            linearSmoothScroller.targetPosition = 0
-            binding.rvMotionAll.layoutManager?.startSmoothScroll(linearSmoothScroller)
-
             binding.mlAll.setTransition(R.id.endSecondAllAnim, R.id.startSecondAllAnim)
             binding.mlAll.transitionToEnd()
+
+            //binding.rvMotionAll.smoothScrollToPosition(0) //Scroll to start of recycler view
+            //binding.rvMotionAll.addOnScrollListener(scrollListener)
+
+            linearSmoothScroller.targetPosition = 0
+            binding.rvMotionAll.layoutManager?.startSmoothScroll(linearSmoothScroller)
+            customLayout.setScrollEnabled(false)
         }
     }
 
     fun timeEnded() {
+        Toast.makeText(this, "Starting First Element", Toast.LENGTH_SHORT).show()
     }
 
 }

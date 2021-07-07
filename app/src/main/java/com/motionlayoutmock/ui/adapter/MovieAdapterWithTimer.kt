@@ -2,6 +2,7 @@ package com.motionlayoutmock.ui.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.opengl.Visibility
 import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
@@ -12,13 +13,14 @@ import com.motionlayoutmock.R
 import com.motionlayoutmock.databinding.ItemMovieBinding
 import com.motionlayoutmock.databinding.ItemMovieWithTimerBinding
 import com.motionlayoutmock.model.MovieModel
+import com.motionlayoutmock.ui.activity.AllAnimsActivity
 
-class MovieAdapterWithTimer(context: Context) : RecyclerView.Adapter<MovieAdapterWithTimer.MovieViewHolder>() {
+class MovieAdapterWithTimer(context: AllAnimsActivity) : RecyclerView.Adapter<MovieAdapterWithTimer.MovieViewHolder>() {
 
     private var movieList: MutableList<MovieModel> = mutableListOf()
     val TOTAL_COUNTDOWN_TIME = 30
     var isStarted = false
-    var context = context
+    var contexto = context
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -84,16 +86,18 @@ class MovieAdapterWithTimer(context: Context) : RecyclerView.Adapter<MovieAdapte
             }
 
             override fun onFinish() {
-                if (binding.circularProgress.text.equals("00:00")) {
-                    binding.circularProgress.text = "00"
-                    Toast.makeText(context, "Time Ended", Toast.LENGTH_SHORT).show()
-                } else {
-                    binding.circularProgress.text = "00"
-                    Toast.makeText(context, "Time Ended", Toast.LENGTH_SHORT).show()
-                }
+                binding.circularProgress.text = "00"
+                // Toast.makeText(context, "Time Ended", Toast.LENGTH_SHORT).show()
+
+                contexto.timeEnded()
             }
         }
         countDownTimer.start()
+    }
+
+    fun hideTimer(binding: ItemMovieWithTimerBinding){
+        binding.circularProgress.visibility = View.INVISIBLE
+        binding.circularTimer.visibility = View.INVISIBLE
     }
 }
 
