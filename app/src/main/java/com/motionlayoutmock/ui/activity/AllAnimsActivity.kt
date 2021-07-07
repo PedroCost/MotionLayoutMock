@@ -36,9 +36,7 @@ class AllAnimsActivity : AppCompatActivity() {
         binding.bingeWatchRail.adapter = movieAdapter
         movieAdapter.addAll(movieDummyData2)
 
-
         customLayout.setScrollEnabled(false)
-
 
         binding.buttonFirst.setOnClickListener {
             makeFirstAnim()
@@ -48,25 +46,19 @@ class AllAnimsActivity : AppCompatActivity() {
             makeSecondAnim()
         }
 
-
         // If User AFK from list for TOTAL_COUNTDOWN_TIME seconds
-        val TOTAL_AFK_TIME = 10
         val countDownTimer = object : CountDownTimer((TOTAL_AFK_TIME * 1000).toLong(), 500) {
             override fun onTick(leftTimeInMilliseconds: Long) {}
             override fun onFinish() {
                 Toast.makeText(contx, "scroll time ended", Toast.LENGTH_SHORT).show()
             }
         }
-
         binding.bingeWatchRail.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 countDownTimer.start()
             }
         })
-
-
-
 
         //Slow recycler view scrolling
         linearSmoothScroller =
@@ -128,12 +120,16 @@ class AllAnimsActivity : AppCompatActivity() {
     }
 
     private fun makeAnimation(transitionStart: Int, transitionEnd: Int){
-        val ANIMATION_DURATION = 1000
         binding.apply {
             mlAll.setTransition(transitionStart, transitionEnd)
             mlAll.setTransitionDuration(ANIMATION_DURATION)
             mlAll.transitionToEnd()
         }
+    }
+
+    companion object{
+        private const val ANIMATION_DURATION = 1000
+        private const val TOTAL_AFK_TIME = 10
     }
 
 }

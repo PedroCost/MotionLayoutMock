@@ -18,7 +18,7 @@ import com.motionlayoutmock.ui.activity.AllAnimsActivity
 class MovieAdapterWithTimer(context: AllAnimsActivity) : RecyclerView.Adapter<MovieAdapterWithTimer.MovieViewHolder>() {
 
     private var movieList: MutableList<MovieModel> = mutableListOf()
-    val TOTAL_COUNTDOWN_TIME = 30
+
     var isStarted = false
     var contexto = context
 
@@ -99,6 +99,11 @@ class MovieAdapterWithTimer(context: AllAnimsActivity) : RecyclerView.Adapter<Mo
         binding.circularProgress.visibility = View.INVISIBLE
         binding.circularTimer.visibility = View.INVISIBLE
     }
+
+    companion object{
+        private const val TOTAL_COUNTDOWN_TIME = 30
+    }
+
 }
 
 //    private fun startTimer(item: ItemMovieWithTimerBinding) {
