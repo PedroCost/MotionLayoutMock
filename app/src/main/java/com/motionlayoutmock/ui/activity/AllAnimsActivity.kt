@@ -32,8 +32,8 @@ class AllAnimsActivity : AppCompatActivity() {
         customLayout = CustomLayout(this, RecyclerView.HORIZONTAL, false)
 
         //binding.rvMotionAll.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
-        binding.rvMotionAll.layoutManager = customLayout
-        binding.rvMotionAll.adapter = movieAdapter
+        binding.bingeWatchRail.layoutManager = customLayout
+        binding.bingeWatchRail.adapter = movieAdapter
         movieAdapter.addAll(movieDummyData2)
 
 
@@ -58,7 +58,7 @@ class AllAnimsActivity : AppCompatActivity() {
             }
         }
 
-        binding.rvMotionAll.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        binding.bingeWatchRail.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 countDownTimer.start()
@@ -70,7 +70,7 @@ class AllAnimsActivity : AppCompatActivity() {
 
         //Slow recycler view scrolling
         linearSmoothScroller =
-            object : LinearSmoothScroller(binding.rvMotionAll.context) {
+            object : LinearSmoothScroller(binding.bingeWatchRail.context) {
                 val MILLISECONDS_PER_INCH = 100f
                 override fun calculateSpeedPerPixel(displayMetrics: DisplayMetrics): Float {
                     return MILLISECONDS_PER_INCH / displayMetrics.densityDpi
@@ -118,7 +118,7 @@ class AllAnimsActivity : AppCompatActivity() {
             //binding.rvMotionAll.addOnScrollListener(scrollListener)
 
             linearSmoothScroller.targetPosition = 0
-            binding.rvMotionAll.layoutManager?.startSmoothScroll(linearSmoothScroller)
+            binding.bingeWatchRail.layoutManager?.startSmoothScroll(linearSmoothScroller)
             customLayout.setScrollEnabled(false)
         }
     }

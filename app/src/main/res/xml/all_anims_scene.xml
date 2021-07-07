@@ -9,34 +9,34 @@
 
     <ConstraintSet android:id="@+id/startAnimRailPeak">
         <Constraint
-            android:id="@+id/tvAnimTitleAll"
-            style="@style/tvAnimTitleAll"
+            android:id="@+id/binge_widget_title"
+            style="@style/MotionLayout.binge_widget_title"
             android:layout_marginEnd="-100dp"
             motion:layout_constraintEnd_toEndOf="parent" />
         <Constraint
-            android:id="@+id/rvMotionAll"
-            style="@style/rvStyleAll"
+            android:id="@+id/binge_watch_rail"
+            style="@style/MotionLayout.binge_widget_rail"
             android:layout_marginEnd="-900dp" />
         <Constraint
-            android:id="@+id/buttonCancelAll"
-            style="@style/buttonCancelAll"
+            android:id="@+id/binge_cancel_button"
+            style="@style/MotionLayout.binge_widget_cancel_button"
             android:layout_marginEnd="-200dp"
             motion:layout_constraintEnd_toEndOf="parent" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/endAnimRailPeak">
         <Constraint
-            android:id="@+id/tvAnimTitleAll"
-            style="@style/tvAnimTitleAll"
-            motion:layout_constraintLeft_toLeftOf="@+id/rvMotionAll" />
+            android:id="@+id/binge_widget_title"
+            style="@style/MotionLayout.binge_widget_title"
+            motion:layout_constraintLeft_toLeftOf="@+id/binge_watch_rail" />
         <Constraint
-            android:id="@+id/rvMotionAll"
-            style="@style/rvStyleAll"
+            android:id="@+id/binge_watch_rail"
+            style="@style/MotionLayout.binge_widget_rail"
             android:layout_marginEnd="-400dp" />
         <Constraint
-            android:id="@+id/buttonCancelAll"
-            style="@style/buttonCancelAll"
-            motion:layout_constraintLeft_toLeftOf="@+id/rvMotionAll" />
+            android:id="@+id/binge_cancel_button"
+            style="@style/MotionLayout.binge_widget_cancel_button"
+            motion:layout_constraintLeft_toLeftOf="@+id/binge_watch_rail" />
     </ConstraintSet>
 
     <!-- Second Animation - Show full rail -->
@@ -46,15 +46,16 @@
 
     <ConstraintSet android:id="@+id/endAnimShowFullRail">
         <Constraint
-            android:id="@+id/tvAnimTitleAll"
-            style="@style/tvAnimTitleAll"
+            android:id="@+id/binge_widget_title"
+            style="@style/MotionLayout.binge_widget_title"
             motion:layout_constraintStart_toStartOf="parent" />
         <Constraint
-            android:id="@+id/rvMotionAll"
-            style="@style/rvStyleAll" />
+            android:id="@+id/binge_watch_rail"
+            style="@style/MotionLayout.binge_widget_rail"
+            />
         <Constraint
-            android:id="@+id/buttonCancelAll"
-            style="@style/buttonCancelAll"
+            android:id="@+id/binge_cancel_button"
+            style="@style/MotionLayout.binge_widget_cancel_button"
             motion:layout_constraintStart_toStartOf="parent" />
     </ConstraintSet>
 

@@ -37,20 +37,20 @@
         >
 
         <TextView
-            android:id="@+id/tvAnimTitleAll"
-            style="@style/tvAnimTitleAll"
+            android:id="@+id/binge_widget_title"
+            style="@style/MotionLayout.binge_widget_title"
             />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvMotionAll"
+            android:id="@+id/binge_watch_rail"
+            style="@style/MotionLayout.binge_widget_rail"
             android:layout_height="200dp"
-            style="@style/rvStyleAll"
             android:nestedScrollingEnabled="false"
             />
 
         <Button
-            android:id="@+id/buttonCancelAll"
-            style="@style/buttonCancelAll"
+            android:id="@+id/binge_cancel_button"
+            style="@style/MotionLayout.binge_widget_cancel_button"
             />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
