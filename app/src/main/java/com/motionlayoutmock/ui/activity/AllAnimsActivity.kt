@@ -1,10 +1,8 @@
 package com.motionlayoutmock.ui.activity
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.DisplayMetrics
-import android.widget.AbsListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearSmoothScroller
@@ -21,11 +19,8 @@ class AllAnimsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAllAnimsBinding
     private var movieAdapter: MovieAdapterWithTimer = MovieAdapterWithTimer(this)
     var atStart = true; var atStart2 = true
-
     lateinit var customLayout : CustomLayout
-
     private lateinit var linearSmoothScroller: LinearSmoothScroller
-
     private lateinit var scrollListener :RecyclerView.OnScrollListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +38,6 @@ class AllAnimsActivity : AppCompatActivity() {
 
 
         customLayout.setScrollEnabled(false)
-
 
 
         binding.buttonFirst.setOnClickListener {
@@ -98,14 +92,12 @@ class AllAnimsActivity : AppCompatActivity() {
         if (!atStart2) return
         if (atStart) {
             atStart = false
-            binding.mlAll.setTransition(R.id.startFirstAllAnim, R.id.endFirstAllAnim)
-            binding.mlAll.transitionToEnd()
+            makeAnimation(R.id.startAnimRailPeak, R.id.endAnimRailPeak)
 
             //binding.rvMotionAll.addOnScrollListener(scrollListener)
         } else {
             atStart = true
-            binding.mlAll.setTransition(R.id.endFirstAllAnim, R.id.startFirstAllAnim)
-            binding.mlAll.transitionToEnd()
+            makeAnimation(R.id.endAnimRailPeak, R.id.startAnimRailPeak)
         }
     }
 
@@ -113,16 +105,14 @@ class AllAnimsActivity : AppCompatActivity() {
         if (atStart) return
         if (atStart2) {
             atStart2 = false
-            binding.mlAll.setTransition(R.id.startSecondAllAnim, R.id.endSecondAllAnim)
-            binding.mlAll.transitionToEnd()
+            makeAnimation(R.id.endAnimRailPeak, R.id.endAnimShowFullRail)
 
             //binding.rvMotionAll.removeOnScrollListener(scrollListener)
             customLayout.setScrollEnabled(true)
 
         } else {
             atStart2 = true
-            binding.mlAll.setTransition(R.id.endSecondAllAnim, R.id.startSecondAllAnim)
-            binding.mlAll.transitionToEnd()
+            makeAnimation(R.id.endAnimShowFullRail, R.id.endAnimRailPeak)
 
             //binding.rvMotionAll.smoothScrollToPosition(0) //Scroll to start of recycler view
             //binding.rvMotionAll.addOnScrollListener(scrollListener)
@@ -135,6 +125,15 @@ class AllAnimsActivity : AppCompatActivity() {
 
     fun timeEnded() {
         Toast.makeText(this, "Starting First Element", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun makeAnimation(transitionStart: Int, transitionEnd: Int){
+        val ANIMATION_DURATION = 1000
+        binding.apply {
+            mlAll.setTransition(transitionStart, transitionEnd)
+            mlAll.setTransitionDuration(ANIMATION_DURATION)
+            mlAll.transitionToEnd()
+        }
     }
 
 }

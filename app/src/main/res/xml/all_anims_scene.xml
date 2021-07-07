@@ -2,79 +2,29 @@
 <MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
-    <!-- First Animation -->
+    <!-- First Animation - Rail peaking -->
     <Transition
-        motion:constraintSetStart="@+id/startFirstAllAnim"
-        motion:constraintSetEnd="@+id/endFirstAllAnim"
-        motion:duration="1000">
-    </Transition>
-    <Transition
-        motion:constraintSetStart="@+id/endFirstAllAnim"
-        motion:constraintSetEnd="@+id/startFirstAllAnim"
-        motion:duration="1000">
-    </Transition>
+        motion:constraintSetEnd="@+id/endAnimRailPeak"
+        motion:constraintSetStart="@+id/startAnimRailPeak" />
 
-
-    <ConstraintSet android:id="@+id/startFirstAllAnim">
-        <Constraint android:id="@+id/tvAnimTitleAll">
-            <Layout
-                style="@style/tvAnimTitleAll"
-                android:layout_marginEnd="-100dp"
-                motion:layout_constraintEnd_toEndOf="parent"
-                />
-        </Constraint>
-        <Constraint android:id="@+id/rvMotionAll">
-            <Layout
-                style="@style/rvStyleAll"
-                android:layout_marginEnd="-900dp"
-                />
-        </Constraint>
+    <ConstraintSet android:id="@+id/startAnimRailPeak">
         <Constraint
-            android:id="@+id/buttonCancelAll">
-            <Layout
-                style="@style/buttonCancelAll"
-                android:layout_marginEnd="-200dp"
-                motion:layout_constraintEnd_toEndOf="parent"
-                />
-        </Constraint>
+            android:id="@+id/tvAnimTitleAll"
+            style="@style/tvAnimTitleAll"
+            android:layout_marginEnd="-100dp"
+            motion:layout_constraintEnd_toEndOf="parent" />
+        <Constraint
+            android:id="@+id/rvMotionAll"
+            style="@style/rvStyleAll"
+            android:layout_marginEnd="-900dp" />
+        <Constraint
+            android:id="@+id/buttonCancelAll"
+            style="@style/buttonCancelAll"
+            android:layout_marginEnd="-200dp"
+            motion:layout_constraintEnd_toEndOf="parent" />
     </ConstraintSet>
 
-    <ConstraintSet android:id="@+id/endFirstAllAnim">
-        <Constraint android:id="@+id/tvAnimTitleAll">
-            <Layout
-                style="@style/tvAnimTitleAll"
-                motion:layout_constraintLeft_toLeftOf="@+id/rvMotionAll"
-                />
-        </Constraint>
-        <Constraint android:id="@+id/rvMotionAll">
-            <Layout
-                style="@style/rvStyleAll"
-                android:layout_marginEnd="-400dp"
-                />
-        </Constraint>
-        <Constraint android:id="@+id/buttonCancelAll">
-            <Layout
-                style="@style/buttonCancelAll"
-                motion:layout_constraintLeft_toLeftOf="@+id/rvMotionAll"
-                />
-        </Constraint>
-    </ConstraintSet>
-
-    <!-- Second Animation -->
-
-    <Transition
-        motion:constraintSetEnd="@+id/startSecondAllAnim"
-        motion:constraintSetStart="@+id/endSecondAllAnim"
-        motion:duration="1000">
-    </Transition>
-
-    <Transition
-        motion:constraintSetEnd="@+id/endSecondAllAnim"
-        motion:constraintSetStart="@+id/startSecondAllAnim"
-        motion:duration="1000" />
-
-
-    <ConstraintSet android:id="@+id/startSecondAllAnim">
+    <ConstraintSet android:id="@+id/endAnimRailPeak">
         <Constraint
             android:id="@+id/tvAnimTitleAll"
             style="@style/tvAnimTitleAll"
@@ -89,7 +39,12 @@
             motion:layout_constraintLeft_toLeftOf="@+id/rvMotionAll" />
     </ConstraintSet>
 
-    <ConstraintSet android:id="@+id/endSecondAllAnim">
+    <!-- Second Animation - Show full rail -->
+    <Transition
+        motion:constraintSetEnd="@+id/endAnimRailPeak"
+        motion:constraintSetStart="@+id/endAnimShowFullRail" />
+
+    <ConstraintSet android:id="@+id/endAnimShowFullRail">
         <Constraint
             android:id="@+id/tvAnimTitleAll"
             style="@style/tvAnimTitleAll"
@@ -97,7 +52,6 @@
         <Constraint
             android:id="@+id/rvMotionAll"
             style="@style/rvStyleAll" />
-
         <Constraint
             android:id="@+id/buttonCancelAll"
             style="@style/buttonCancelAll"
