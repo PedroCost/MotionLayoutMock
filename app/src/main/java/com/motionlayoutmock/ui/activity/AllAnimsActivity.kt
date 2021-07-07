@@ -3,12 +3,12 @@ package com.motionlayoutmock.ui.activity
 import android.os.Bundle
 import android.util.DisplayMetrics
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 import com.motionlayoutmock.R
 import com.motionlayoutmock.databinding.ActivityAllAnimsBinding
 import com.motionlayoutmock.model.movieDummyData2
+import com.motionlayoutmock.ui.CustomLayout
 import com.motionlayoutmock.ui.adapter.MovieAdapterWithTimer
 
 
@@ -17,8 +17,10 @@ class AllAnimsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAllAnimsBinding
     private var movieAdapter: MovieAdapterWithTimer = MovieAdapterWithTimer(this)
     var atStart = true; var atStart2 = true
-    lateinit var linearSmoothScroller: LinearSmoothScroller
 
+    lateinit var customLayout : CustomLayout
+
+    private lateinit var linearSmoothScroller: LinearSmoothScroller
     private lateinit var scrollListener :RecyclerView.OnScrollListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,10 +28,17 @@ class AllAnimsActivity : AppCompatActivity() {
         binding = ActivityAllAnimsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.rvMotionAll.layoutManager =
-            LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+        customLayout = CustomLayout(this, RecyclerView.HORIZONTAL, false)
+
+        //binding.rvMotionAll.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+        binding.rvMotionAll.layoutManager = customLayout
         binding.rvMotionAll.adapter = movieAdapter
         movieAdapter.addAll(movieDummyData2)
+
+
+        customLayout.setScrollEnabled(false)
+
+
 
         binding.buttonFirst.setOnClickListener {
             makeFirstAnim()
@@ -38,6 +47,7 @@ class AllAnimsActivity : AppCompatActivity() {
         binding.buttonSecond.setOnClickListener {
             makeSecondAnim()
         }
+
 
         //Slow recycler view scrolling
         linearSmoothScroller =
@@ -58,6 +68,7 @@ class AllAnimsActivity : AppCompatActivity() {
         }
     }
 
+
     private fun makeFirstAnim() {
         if (!atStart2) return
         if (atStart) {
@@ -65,7 +76,6 @@ class AllAnimsActivity : AppCompatActivity() {
             binding.mlAll.setTransition(R.id.startFirstAllAnim, R.id.endFirstAllAnim)
             binding.mlAll.transitionToEnd()
             binding.rvMotionAll.addOnScrollListener(scrollListener)
-
         } else {
             atStart = true
             binding.mlAll.setTransition(R.id.endFirstAllAnim, R.id.startFirstAllAnim)
@@ -80,6 +90,8 @@ class AllAnimsActivity : AppCompatActivity() {
             binding.rvMotionAll.removeOnScrollListener(scrollListener)
             binding.mlAll.setTransition(R.id.startSecondAllAnim, R.id.endSecondAllAnim)
             binding.mlAll.transitionToEnd()
+
+            customLayout.setScrollEnabled(true)
 
         } else {
             atStart2 = true

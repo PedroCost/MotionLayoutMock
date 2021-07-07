@@ -4,44 +4,60 @@
 
     <!-- First Animation -->
     <Transition
-        motion:constraintSetEnd="@+id/endFirstAllAnim"
         motion:constraintSetStart="@+id/startFirstAllAnim"
-        motion:duration="1000"/>
+        motion:constraintSetEnd="@+id/endFirstAllAnim"
+        motion:duration="1000">
+    </Transition>
     <Transition
-        motion:constraintSetEnd="@+id/startFirstAllAnim"
         motion:constraintSetStart="@+id/endFirstAllAnim"
-        motion:duration="1000"/>
+        motion:constraintSetEnd="@+id/startFirstAllAnim"
+        motion:duration="1000">
+    </Transition>
+
 
     <ConstraintSet android:id="@+id/startFirstAllAnim">
+        <Constraint android:id="@+id/tvAnimTitleAll">
+            <Layout
+                style="@style/tvAnimTitleAll"
+                android:layout_marginEnd="-100dp"
+                motion:layout_constraintEnd_toEndOf="parent"
+                />
+        </Constraint>
+        <Constraint android:id="@+id/rvMotionAll">
+            <Layout
+                style="@style/rvStyleAll"
+                android:layout_marginEnd="-900dp"
+                />
+        </Constraint>
         <Constraint
-            android:id="@+id/tvAnimTitleAll"
-            style="@style/tvAnimTitleAll"
-            android:layout_marginEnd="-100dp"
-            motion:layout_constraintEnd_toEndOf="parent" />
-        <Constraint
-            android:id="@+id/rvMotionAll"
-            style="@style/rvStyleAll"
-            android:layout_marginEnd="-900dp" />
-        <Constraint
-            android:id="@+id/buttonCancelAll"
-            style="@style/buttonCancelAll"
-            android:layout_marginEnd="-200dp"
-            motion:layout_constraintEnd_toEndOf="parent" />
+            android:id="@+id/buttonCancelAll">
+            <Layout
+                style="@style/buttonCancelAll"
+                android:layout_marginEnd="-200dp"
+                motion:layout_constraintEnd_toEndOf="parent"
+                />
+        </Constraint>
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/endFirstAllAnim">
-        <Constraint
-            android:id="@+id/tvAnimTitleAll"
-            style="@style/tvAnimTitleAll"
-            motion:layout_constraintLeft_toLeftOf="@+id/rvMotionAll" />
-        <Constraint
-            android:id="@+id/rvMotionAll"
-            style="@style/rvStyleAll"
-            android:layout_marginEnd="-400dp" />
-        <Constraint
-            android:id="@+id/buttonCancelAll"
-            style="@style/buttonCancelAll"
-            motion:layout_constraintLeft_toLeftOf="@+id/rvMotionAll" />
+        <Constraint android:id="@+id/tvAnimTitleAll">
+            <Layout
+                style="@style/tvAnimTitleAll"
+                motion:layout_constraintLeft_toLeftOf="@+id/rvMotionAll"
+                />
+        </Constraint>
+        <Constraint android:id="@+id/rvMotionAll">
+            <Layout
+                style="@style/rvStyleAll"
+                android:layout_marginEnd="-400dp"
+                />
+        </Constraint>
+        <Constraint android:id="@+id/buttonCancelAll">
+            <Layout
+                style="@style/buttonCancelAll"
+                motion:layout_constraintLeft_toLeftOf="@+id/rvMotionAll"
+                />
+        </Constraint>
     </ConstraintSet>
 
     <!-- Second Animation -->
@@ -50,18 +66,6 @@
         motion:constraintSetEnd="@+id/startSecondAllAnim"
         motion:constraintSetStart="@+id/endSecondAllAnim"
         motion:duration="1000">
-        <onSwipe
-            motion:dragDirection="dragLeft"
-            motion:touchAnchorId="@id/tvAnimTitleAll"
-            motion:touchAnchorSide="left" />
-        <onSwipe
-            motion:dragDirection="dragLeft"
-            motion:touchAnchorId="@id/rvMotionAll"
-            motion:touchAnchorSide="right" />
-        <onSwipe
-            motion:dragDirection="dragRight"
-            motion:touchAnchorId="@id/buttonCancelAll"
-            motion:touchAnchorSide="right" />
     </Transition>
 
     <Transition

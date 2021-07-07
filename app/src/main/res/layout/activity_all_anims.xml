@@ -33,7 +33,9 @@
         app:layoutDescription="@xml/all_anims_scene"
         android:id="@+id/mlAll"
         app:showPaths="true"
-        tools:showPaths="true">
+        tools:showPaths="true"
+        android:background="#B8B8B8"
+        >
 
         <TextView
             android:id="@+id/tvAnimTitleAll"
@@ -44,6 +46,7 @@
             android:id="@+id/rvMotionAll"
             android:layout_height="200dp"
             style="@style/rvStyleAll"
+            android:nestedScrollingEnabled="false"
             />
 
         <Button
