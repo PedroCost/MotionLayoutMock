@@ -8,77 +8,29 @@
     android:clipChildren="false"
     >
 
-<androidx.cardview.widget.CardView
-    android:id="@+id/cardView"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    app:layout_constraintDimensionRatio="16:11"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="8dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    >
+    <include
+        android:id="@+id/includeMovie"
+        layout="@layout/item_movie"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/b99two"
-        >
+    <ProgressBar
+        android:id="@+id/circularTimer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:indeterminateOnly="false"
+        android:progressDrawable="@drawable/pb_circular_determinative"
+        tools:progress="100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ProgressBar
-            android:id="@+id/circularTimer"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:indeterminateOnly="false"
-            android:progressDrawable="@drawable/pb_circular_determinative"
-            tools:progress="100"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/circularProgress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/circularTimer"
-            app:layout_constraintEnd_toEndOf="@+id/circularTimer"
-            app:layout_constraintStart_toStartOf="@+id/circularTimer"
-            app:layout_constraintTop_toTopOf="@+id/circularTimer"
-            tools:text="30" />
-
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/tvDescription"
-            tools:text="Brooklyn Nine-Nine" />
-
-        <TextView
-            android:id="@+id/tvDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginBottom="16dp"
-            android:ellipsize="end"
-            android:textColor="@color/white"
-            android:maxLines="1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="Comedy series following the exploits of Det. Jake Peralta and his diverse, lovable colleagues as they police the NYPD's 99th Precinct." />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/circularProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/circularTimer"
+        app:layout_constraintEnd_toEndOf="@+id/circularTimer"
+        app:layout_constraintStart_toStartOf="@+id/circularTimer"
+        app:layout_constraintTop_toTopOf="@+id/circularTimer"
+        tools:text="30" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

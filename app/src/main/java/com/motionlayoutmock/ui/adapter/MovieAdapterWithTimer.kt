@@ -55,8 +55,9 @@ class MovieAdapterWithTimer(context: AllAnimsActivity) : RecyclerView.Adapter<Mo
 
         if (position == 0) {
             ItemMovieWithTimerBinding.bind(holder.itemView).apply {
-                tvTitle.text = child.title
-                tvDescription.text = child.description
+                includeMovie.tvTitle.text = child.title
+                includeMovie.tvDescription.text = child.description
+
                 timer(this)
             }
         } else {
