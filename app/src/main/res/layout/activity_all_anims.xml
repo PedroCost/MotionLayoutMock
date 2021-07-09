@@ -29,8 +29,8 @@
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutDescription="@xml/all_anims_scene"
-        android:id="@+id/mlAll"
+        app:layoutDescription="@xml/binge_widget_rail_animations"
+        android:id="@+id/binge_widget_motionLayout"
         tools:showPaths="true"
         tools:background="#B8B8B8"
         >
@@ -38,18 +38,19 @@
         <TextView
             android:id="@+id/binge_widget_title"
             style="@style/MotionLayout.binge_widget_title"
+            app:layout_constraintLeft_toLeftOf="@+id/binge_widget_rail"
             />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/binge_watch_rail"
+            android:id="@+id/binge_widget_rail"
             style="@style/MotionLayout.binge_widget_rail"
             android:layout_height="200dp"
-            android:nestedScrollingEnabled="false"
             />
 
         <Button
-            android:id="@+id/binge_cancel_button"
+            android:id="@+id/binge_widget_cancel_button"
             style="@style/MotionLayout.binge_widget_cancel_button"
+            app:layout_constraintLeft_toLeftOf="@+id/binge_widget_rail"
             />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>

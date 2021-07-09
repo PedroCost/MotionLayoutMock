@@ -1,7 +1,11 @@
 package com.motionlayoutmock.ui.activity
 
+import android.annotation.SuppressLint
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import android.util.DisplayMetrics
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -27,13 +31,15 @@ class AllAnimsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAllAnimsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR;
         var contx = this
 
         customLayout = CustomLayout(this, RecyclerView.HORIZONTAL, false)
 
         //binding.rvMotionAll.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
-        binding.bingeWatchRail.layoutManager = customLayout
-        binding.bingeWatchRail.adapter = movieAdapter
+        binding.bingeWidgetRail.layoutManager = customLayout
+        binding.bingeWidgetRail.adapter = movieAdapter
         movieAdapter.addAll(movieDummyData2)
 
         customLayout.setScrollEnabled(false)
@@ -46,6 +52,19 @@ class AllAnimsActivity : AppCompatActivity() {
             makeSecondAnim()
         }
 
+
+
+        val mainHandler = Handler(Looper.getMainLooper())
+
+        mainHandler.post(object : Runnable {
+            override fun run() {
+                println(binding.bingeWidgetMotionLayout.progress)
+                mainHandler.postDelayed(this, 100)
+            }
+        })
+
+
+
         // If User AFK from list for TOTAL_COUNTDOWN_TIME seconds
         val countDownTimer = object : CountDownTimer((TOTAL_AFK_TIME * 1000).toLong(), 500) {
             override fun onTick(leftTimeInMilliseconds: Long) {}
@@ -53,7 +72,7 @@ class AllAnimsActivity : AppCompatActivity() {
                 Toast.makeText(contx, "scroll time ended", Toast.LENGTH_SHORT).show()
             }
         }
-        binding.bingeWatchRail.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        binding.bingeWidgetRail.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 countDownTimer.start()
@@ -62,7 +81,7 @@ class AllAnimsActivity : AppCompatActivity() {
 
         //Slow recycler view scrolling
         linearSmoothScroller =
-            object : LinearSmoothScroller(binding.bingeWatchRail.context) {
+            object : LinearSmoothScroller(binding.bingeWidgetRail.context) {
                 val MILLISECONDS_PER_INCH = 100f
                 override fun calculateSpeedPerPixel(displayMetrics: DisplayMetrics): Float {
                     return MILLISECONDS_PER_INCH / displayMetrics.densityDpi
@@ -100,8 +119,6 @@ class AllAnimsActivity : AppCompatActivity() {
             makeAnimation(R.id.endAnimRailPeak, R.id.endAnimShowFullRail)
 
             //binding.rvMotionAll.removeOnScrollListener(scrollListener)
-            customLayout.setScrollEnabled(true)
-
         } else {
             atStart2 = true
             makeAnimation(R.id.endAnimShowFullRail, R.id.endAnimRailPeak)
@@ -110,7 +127,7 @@ class AllAnimsActivity : AppCompatActivity() {
             //binding.rvMotionAll.addOnScrollListener(scrollListener)
 
             linearSmoothScroller.targetPosition = 0
-            binding.bingeWatchRail.layoutManager?.startSmoothScroll(linearSmoothScroller)
+            binding.bingeWidgetRail.layoutManager?.startSmoothScroll(linearSmoothScroller)
             customLayout.setScrollEnabled(false)
         }
     }
@@ -120,10 +137,10 @@ class AllAnimsActivity : AppCompatActivity() {
     }
 
     private fun makeAnimation(transitionStart: Int, transitionEnd: Int){
-        binding.apply {
-            mlAll.setTransition(transitionStart, transitionEnd)
-            mlAll.setTransitionDuration(ANIMATION_DURATION)
-            mlAll.transitionToEnd()
+        with(binding.bingeWidgetMotionLayout){
+            setTransition(transitionStart, transitionEnd)
+            setTransitionDuration(ANIMATION_DURATION)
+            transitionToEnd()
         }
     }
 
