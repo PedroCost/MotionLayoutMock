@@ -12,16 +12,14 @@
 
     <ConstraintSet android:id="@+id/startAnimRailPeak">
         <Constraint
-            android:id="@+id/binge_widget_rail"
-            style="@style/MotionLayout.binge_widget_rail"
+            android:id="@+id/includedRail"
             motion:layout_constraintStart_toEndOf="parent"/>
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/endAnimRailPeak">
         <Constraint
-            android:id="@+id/binge_widget_rail"
-            style="@style/MotionLayout.binge_widget_rail"
-            motion:layout_constraintStart_toEndOf="@+id/guideline"
+            android:id="@+id/includedRail"
+            motion:layout_constraintStart_toStartOf="@+id/guideline"
             />
     </ConstraintSet>
 
@@ -32,7 +30,7 @@
         motion:duration="1000"
         >
         <OnSwipe
-            motion:touchAnchorId="@id/binge_widget_rail"
+            motion:touchAnchorId="@id/viewGroupRail"
             motion:touchAnchorSide="right"
             motion:dragDirection="dragLeft"
             />
@@ -41,8 +39,7 @@
 
     <ConstraintSet android:id="@+id/endAnimShowFullRail">
         <Constraint
-            android:id="@+id/binge_widget_rail"
-            style="@style/MotionLayout.binge_widget_rail"
+            android:id="@+id/viewGroupRail"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             />

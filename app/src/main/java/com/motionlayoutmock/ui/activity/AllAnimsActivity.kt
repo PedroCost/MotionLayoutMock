@@ -1,11 +1,8 @@
 package com.motionlayoutmock.ui.activity
 
-import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.os.Handler
-import android.os.Looper
 import android.util.DisplayMetrics
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -52,16 +49,6 @@ class AllAnimsActivity : AppCompatActivity() {
             makeSecondAnim()
         }
 
-
-
-        val mainHandler = Handler(Looper.getMainLooper())
-
-        mainHandler.post(object : Runnable {
-            override fun run() {
-                println(binding.bingeWidgetMotionLayout.progress)
-                mainHandler.postDelayed(this, 100)
-            }
-        })
 
 
 
@@ -117,7 +104,7 @@ class AllAnimsActivity : AppCompatActivity() {
         if (atStart2) {
             atStart2 = false
             makeAnimation(R.id.endAnimRailPeak, R.id.endAnimShowFullRail)
-
+            customLayout.setScrollEnabled(true)
             //binding.rvMotionAll.removeOnScrollListener(scrollListener)
         } else {
             atStart2 = true
