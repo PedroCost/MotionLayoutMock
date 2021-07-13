@@ -15,7 +15,7 @@ import com.motionlayoutmock.databinding.ItemMovieWithTimerBinding
 import com.motionlayoutmock.model.MovieModel
 import com.motionlayoutmock.ui.activity.AllAnimsActivity
 
-class MovieAdapterWithTimer(context: AllAnimsActivity) : RecyclerView.Adapter<MovieAdapterWithTimer.MovieViewHolder>() {
+class MovieAdapterWithTimer(context: Context) : RecyclerView.Adapter<MovieAdapterWithTimer.MovieViewHolder>() {
 
     private var movieList: MutableList<MovieModel> = mutableListOf()
 
@@ -90,7 +90,7 @@ class MovieAdapterWithTimer(context: AllAnimsActivity) : RecyclerView.Adapter<Mo
                 binding.circularProgress.text = "00"
                 // Toast.makeText(context, "Time Ended", Toast.LENGTH_SHORT).show()
 
-                contexto.timeEnded()
+                //contexto.timeEnded()
             }
         }
         countDownTimer.start()

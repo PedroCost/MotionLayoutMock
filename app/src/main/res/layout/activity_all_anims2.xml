@@ -27,10 +27,11 @@
     </LinearLayout>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
-        android:id="@+id/binge_widget_motionLayout"
-        app:layoutDescription="@xml/binge_widget_rail_animations"
+        android:id="@+id/binge_widget_motionLayout2"
+        app:layoutDescription="@xml/binge_widget_rail_animations2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:showPaths="true"
         tools:background="#B8B8B8"
         tools:showPaths="true">
 
@@ -41,22 +42,9 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.7" />
 
-        <TextView
-            android:id="@+id/binge_widget_title"
-            style="@style/MotionLayout.binge_widget_title"
-            app:layout_constraintBottom_toTopOf="@+id/binge_widget_rail"
-            app:layout_constraintLeft_toLeftOf="@+id/binge_widget_rail" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/binge_widget_rail"
-            style="@style/MotionLayout.binge_widget_rail"
-            android:nestedScrollingEnabled="false" />
-
-        <Button
-            android:id="@+id/binge_widget_cancel_button"
-            style="@style/MotionLayout.binge_widget_cancel_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="@+id/binge_widget_rail" />
+        <include
+            android:id="@+id/includedRail"
+            layout="@layout/rail" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </LinearLayout>

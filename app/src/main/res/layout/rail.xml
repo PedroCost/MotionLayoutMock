@@ -3,6 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/red"
     android:id="@+id/viewGroupRail">
 
     <TextView
@@ -16,7 +17,6 @@
         android:id="@+id/binge_widget_rail"
         style="@style/MotionLayout.binge_widget_rail"
         android:nestedScrollingEnabled="false"
-        android:layout_height="200dp"
         app:layout_constraintBottom_toTopOf="@+id/binge_widget_cancel_button"
         app:layout_constraintLeft_toLeftOf="parent"
         />

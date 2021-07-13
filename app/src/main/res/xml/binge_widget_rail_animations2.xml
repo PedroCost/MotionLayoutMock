@@ -4,19 +4,19 @@
 
     <!-- First Animation - Rail peaking -->
     <Transition
-        motion:constraintSetEnd="@+id/endAnimRailPeak"
-        motion:constraintSetStart="@+id/startAnimRailPeak"
+        motion:constraintSetEnd="@+id/endAnimRailPeak2"
+        motion:constraintSetStart="@+id/startAnimRailPeak2"
         motion:duration="1000"
         >
     </Transition>
 
-    <ConstraintSet android:id="@+id/startAnimRailPeak">
+    <ConstraintSet android:id="@+id/startAnimRailPeak2">
         <Constraint
             android:id="@+id/includedRail"
             motion:layout_constraintStart_toEndOf="parent"/>
     </ConstraintSet>
 
-    <ConstraintSet android:id="@+id/endAnimRailPeak">
+    <ConstraintSet android:id="@+id/endAnimRailPeak2">
         <Constraint
             android:id="@+id/includedRail"
             motion:layout_constraintStart_toStartOf="@+id/guideline"
@@ -25,8 +25,8 @@
 
     <!-- Second Animation - Show full rail -->
     <Transition
-        motion:constraintSetEnd="@+id/endAnimRailPeak"
-        motion:constraintSetStart="@+id/endAnimShowFullRail"
+        motion:constraintSetEnd="@+id/endAnimRailPeak2"
+        motion:constraintSetStart="@+id/endAnimShowFullRail2"
         motion:duration="1000"
         >
         <OnSwipe
@@ -37,7 +37,7 @@
     </Transition>
 
 
-    <ConstraintSet android:id="@+id/endAnimShowFullRail">
+    <ConstraintSet android:id="@+id/endAnimShowFullRail2">
         <Constraint
             android:id="@+id/viewGroupRail"
             motion:layout_constraintStart_toStartOf="parent"
