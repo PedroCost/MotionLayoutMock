@@ -4,8 +4,11 @@ import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.DisplayMetrics
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 import com.motionlayoutmock.R
@@ -49,7 +52,48 @@ class AllAnimsActivity : AppCompatActivity() {
             makeSecondAnim()
         }
 
+        binding.bingeWidgetRail.setOnTouchListener { _, event ->
+            binding.bingeWidgetMotionLayout.onTouchEvent(event)
+            return@setOnTouchListener false
+        }
 
+
+
+
+        binding.bingeWidgetMotionLayout.setTransitionListener(object : MotionLayout.TransitionListener{
+            override fun onTransitionStarted(
+                motionLayout: MotionLayout?,
+                startId: Int,
+                endId: Int
+            ) {
+
+            }
+
+            override fun onTransitionChange(
+                motionLayout: MotionLayout?,
+                startId: Int,
+                endId: Int,
+                progress: Float
+            ) {
+
+            }
+
+            override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
+                if (currentId == R.id.endAnimShowFullRail){
+                    binding.bingeWidgetRail.setOnTouchListener(null)
+                }
+            }
+
+            override fun onTransitionTrigger(
+                motionLayout: MotionLayout?,
+                triggerId: Int,
+                positive: Boolean,
+                progress: Float
+            ) {
+
+            }
+
+        })
 
 
         // If User AFK from list for TOTAL_COUNTDOWN_TIME seconds
@@ -129,6 +173,12 @@ class AllAnimsActivity : AppCompatActivity() {
             setTransitionDuration(ANIMATION_DURATION)
             transitionToEnd()
         }
+    }
+
+    enum class AnimStates{
+        HIDDEN,
+        PEAK,
+        FULL
     }
 
     companion object{

@@ -68,6 +68,12 @@ class MovieAdapterWithTimer(context: Context) : RecyclerView.Adapter<MovieAdapte
         }
     }
 
+    fun removeAt(position: Int) {
+        movieList.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
+
     fun addAll(genreList: List<MovieModel>) {
         this.movieList.clear()
         this.movieList.addAll(genreList)
